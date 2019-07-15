@@ -37,6 +37,11 @@ const VueGQL = {
 };
 if (typeof window !== 'undefined' && window.Vue && window.Vue.http) {
     window.Vue.use(VueGQL);
+    Vue.gql = {
+        query: Vue.prototype.$gql.query,
+        mutation: Vue.prototype.$gql.mutation,
+        subscription: Vue.prototype.$gql.mutation
+    };
 }
 window.jsonToGraphQLQuery = jsonToGraphQLQuery;
 
