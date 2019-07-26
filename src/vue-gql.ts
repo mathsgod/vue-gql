@@ -1,54 +1,66 @@
 import { jsonToGraphQLQuery } from 'json-to-graphql-query';
 
-const VueGQL = {
-
-    install: (Vue: any, options = {}) => {
-        Vue.mixin({
-
-        });
-        Vue.prototype.$gql = {
-            query(url: String, query: any) {
-                var q = {
-                    query: query
-                };
-                return Vue.http.post(url, {
-                    query: jsonToGraphQLQuery(q)
-                });
-            },
-            mutation(url: String, query: any) {
-                var q = {
-                    mutation: query
-                };
-                return Vue.http.post(url, {
-                    query: jsonToGraphQLQuery(q)
-                });
-            }, subscription(url: String, query: any) {
-                var q = {
-                    subscription: query
-                };
-                return Vue.http.post(url, {
-                    query: jsonToGraphQLQuery(q)
-                });
-            }
-        };
-    }
-};
 declare global {
     interface Window {
-        jsonToGraphQLQuery: any
-        Vue: any
+        jsonToGraphQLQuery: any;
+        Vue: any;
+    }
+    interface GQLResponse {
+        data: {
+            data: any;
+            error: {
+                message: String;
+            }
+        }
+    }
+}
+
+class GQL {
+
+    private Vue: any;
+    constructor(Vue: any) {
+        this.Vue = Vue;
+    }
+
+    query(url: String, query: any): GQLResponse {
+        var q = {
+            query: query
+        };
+        return this.Vue.http.post(url, {
+            query: jsonToGraphQLQuery(q)
+        });
+    }
+
+    mutation(url: String, query: any): GQLResponse {
+        var q = {
+            mutation: query
+        };
+        return this.Vue.http.post(url, {
+            query: jsonToGraphQLQuery(q)
+        });
+    }
+
+    subscription(url: String, query: any): GQLResponse {
+        var q = {
+            subscription: query
+        };
+        return this.Vue.http.post(url, {
+            query: jsonToGraphQLQuery(q)
+        });
     }
 }
 
 if (typeof window !== 'undefined' && window.Vue && window.Vue.http) {
-    window.Vue.use(VueGQL);
-    window.Vue.gql = {
-        query: window.Vue.prototype.$gql.query,
-        mutation: window.Vue.prototype.$gql.mutation,
-        subscription: window.Vue.prototype.$gql.mutation
-    };
+    window.Vue.use({
+        install: (Vue: any, options = {}) => {
+            Vue.mixin({
+
+            });
+            Vue.prototype.$gql = new GQL(Vue);
+        }
+    });
+    window.Vue.gql = window.Vue.prototype.$gql;
 }
 window.jsonToGraphQLQuery = jsonToGraphQLQuery;
 
-
-export default VueGQL;
+export default GQL;
