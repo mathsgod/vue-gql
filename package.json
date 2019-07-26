@@ -11,10 +11,13 @@
   },
   "license": "ISC",
   "devDependencies": {
+    "ts-loader": "^6.0.4",
+    "typescript": "^3.5.3",
     "webpack": "^4.25.1",
     "webpack-cli": "^3.1.2"
   },
   "dependencies": {
-    "json-to-graphql-query": "^1.9.0"
+    "json-to-graphql-query": "^1.9.0",
+    "vue": "^2.6.10"
   }
 }

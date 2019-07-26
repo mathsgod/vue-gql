@@ -1,0 +1,1 @@
+{"version":3,"file":"vue-gql.d.ts","sourceRoot":"","sources":["../src/vue-gql.ts"],"names":[],"mappings":"AAEA,QAAA,MAAM,MAAM;;CAgCX,CAAC;AACF,OAAO,CAAC,MAAM,CAAC;IACX,UAAU,MAAM;QACZ,kBAAkB,EAAE,GAAG,CAAA;QACvB,GAAG,EAAE,GAAG,CAAA;KACX;CACJ;AAaD,eAAe,MAAM,CAAC"}
