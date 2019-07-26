@@ -1,23 +1,17 @@
+/// <reference types="vue" />
+/// <reference types="vue-resource" />
 declare global {
     interface Window {
         jsonToGraphQLQuery: any;
         Vue: any;
     }
-    interface GQLResponse {
-        data: {
-            data: any;
-            error: {
-                message: String;
-            };
-        };
-    }
 }
 declare class GQL {
     private Vue;
-    constructor(Vue: any);
-    query(url: String, query: any): GQLResponse;
-    mutation(url: String, query: any): GQLResponse;
-    subscription(url: String, query: any): GQLResponse;
+    constructor(Vue: vuejs.VueStatic);
+    query(url: string, query: any): PromiseLike<vuejs.HttpResponse>;
+    mutation(url: string, query: any): PromiseLike<vuejs.HttpResponse>;
+    subscription(url: string, query: any): PromiseLike<vuejs.HttpResponse>;
 }
 export default GQL;
 //# sourceMappingURL=vue-gql.d.ts.map

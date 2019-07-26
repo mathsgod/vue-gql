@@ -3,6 +3,7 @@ const path = require('path');
 module.exports = {
     mode: "production",
     entry: "./src/vue-gql.ts",
+    watch: true,
     module: {
         rules: [
             {

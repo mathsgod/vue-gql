@@ -1,28 +1,20 @@
 import { jsonToGraphQLQuery } from 'json-to-graphql-query';
-
+/// <reference types="vue-resource" />
 declare global {
     interface Window {
         jsonToGraphQLQuery: any;
         Vue: any;
     }
-    interface GQLResponse {
-        data: {
-            data: any;
-            error: {
-                message: String;
-            }
-        }
-    }
 }
 
 class GQL {
 
-    private Vue: any;
-    constructor(Vue: any) {
+    private Vue: vuejs.VueStatic
+    constructor(Vue: vuejs.VueStatic) {
         this.Vue = Vue;
     }
 
-    query(url: String, query: any): GQLResponse {
+    query(url: string, query: any): PromiseLike<vuejs.HttpResponse> {
         var q = {
             query: query
         };
@@ -31,7 +23,7 @@ class GQL {
         });
     }
 
-    mutation(url: String, query: any): GQLResponse {
+    mutation(url: string, query: any): PromiseLike<vuejs.HttpResponse> {
         var q = {
             mutation: query
         };
@@ -40,7 +32,7 @@ class GQL {
         });
     }
 
-    subscription(url: String, query: any): GQLResponse {
+    subscription(url: string, query: any): PromiseLike<vuejs.HttpResponse> {
         var q = {
             subscription: query
         };

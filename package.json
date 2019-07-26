@@ -17,6 +17,7 @@
     "webpack-cli": "^3.1.2"
   },
   "dependencies": {
+    "@types/vue-resource": "^0.9.34",
     "json-to-graphql-query": "^1.9.0",
     "vue": "^2.6.10"
   }
