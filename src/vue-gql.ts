@@ -1,5 +1,7 @@
 import { jsonToGraphQLQuery } from 'json-to-graphql-query';
+/// <reference types="vue" />
 /// <reference types="vue-resource" />
+
 declare global {
     interface Window {
         jsonToGraphQLQuery: any;
@@ -44,7 +46,7 @@ class GQL {
 
 if (typeof window !== 'undefined' && window.Vue && window.Vue.http) {
     window.Vue.use({
-        install: (Vue: any, options = {}) => {
+        install: (Vue: any, options: any = {}) => {
             Vue.mixin({
 
             });
