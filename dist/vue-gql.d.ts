@@ -3,6 +3,7 @@
 declare global {
     interface Window {
         jsonToGraphQLQuery: any;
+        VariableType: any;
         Vue: any;
     }
 }

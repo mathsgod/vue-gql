@@ -1,10 +1,11 @@
-import { jsonToGraphQLQuery } from 'json-to-graphql-query';
+import { jsonToGraphQLQuery, VariableType } from 'json-to-graphql-query';
 /// <reference types="vue" />
 /// <reference types="vue-resource" />
 
 declare global {
     interface Window {
         jsonToGraphQLQuery: any;
+        VariableType: any;
         Vue: any;
     }
 }
@@ -56,5 +57,6 @@ if (typeof window !== 'undefined' && window.Vue && window.Vue.http) {
     window.Vue.gql = window.Vue.prototype.$gql;
 }
 window.jsonToGraphQLQuery = jsonToGraphQLQuery;
+window.VariableType = VariableType;
 
 export default GQL;
