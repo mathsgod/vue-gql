@@ -26,7 +26,9 @@ class GQL {
 
 export default {
     install(Vue, options) {
-        Vue.prototype.$gql = new GQL(Vue);
+        let gql = new GQL(Vue);
+        Vue.gql = gql;
+        Vue.prototype.$gql = gql;
 
     }
 }
