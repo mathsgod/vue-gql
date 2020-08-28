@@ -2,15 +2,10 @@ const path = require('path');
 
 module.exports = {
     mode: "production",
-    entry: "./src/vue-gql.ts",
+    entry: "./src/vue-gql.js",
     //watch: true,
     module: {
         rules: [
-            {
-                test: /\.tsx?$/,
-                use: 'ts-loader',
-                exclude: /node_modules/
-            },
             {
                 test: /\.m?js$/,
                 exclude: /(node_modules|bower_components)/,
@@ -22,9 +17,6 @@ module.exports = {
                 }
             }
         ]
-    },
-    resolve: {
-        extensions: ['.tsx', '.ts', '.js']
     },
     output: {
         filename: "vue-gql.js",
